@@ -33,6 +33,13 @@ var summaries = new[]
     "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
 };
 
+app.Use(async (context, next) =>
+{
+   Console.WriteLine(DateTimeOffset.UtcNow);
+
+    await next();
+});
+
 app.MapGet("/weatherforecast", () =>
 {
     var forecast = Enumerable.Range(1, 5).Select(index =>
@@ -51,7 +58,7 @@ app.MapGet("/weatherforecast", () =>
 
 app.MapGet(
         "/weatherforecast2",
-        [OutputCache(PolicyName = "Expire20")]() =>
+        [OutputCache(PolicyName = "Expire20")] () =>
         {
             var forecast = Enumerable.Range(1, 5).Select(
                     index =>

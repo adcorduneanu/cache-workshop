@@ -38,6 +38,18 @@ var summaries = new[]
     "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
 };
 
+app.Use(
+    async (
+        context,
+        next
+    ) =>
+    {
+        Console.WriteLine(DateTimeOffset.UtcNow);
+
+        await next();
+    }
+);
+
 app.MapGet(
         "/weatherforecast",
         (
@@ -54,7 +66,7 @@ app.MapGet(
                 )
                 .ToArray();
 
-            context.Response.GetTypedHeaders().CacheControl = new CacheControlHeaderValue()
+            context.Response.GetTypedHeaders().CacheControl = new CacheControlHeaderValue
             {
                 MaxAge = TimeSpan.FromSeconds(10),
                 Public = true,

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>My PWA with SW</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="manifest" href="/manifest.json">
+</head>
+
+<body>
+    <h1>Welcome to My PWA!</h1>
+    <p>This is a sample PWA with a Service Worker.</p>
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('sw-cache-ahead.js', { scope: './' });
+        }
+    </script>
+</body>
+
+</html>

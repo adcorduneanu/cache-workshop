@@ -1,0 +1,17 @@
+{
+    "name": "My PWA with SW",
+    "short_name": "My PWA",
+    "description": "A sample PWA with a Service Worker",
+    "icons": [
+      {
+        "src": "/icon.png",
+        "sizes": "192x192",
+        "type": "image/png"
+      }
+    ],
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#000000"
+  }
+  
